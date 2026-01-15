@@ -1,0 +1,11 @@
+langchain
+langchain-community
+llama-index
+transformers
+torch
+sentence-transformers
+fastapi
+uvicorn
+qdrant-client
+duckduckgo-search
+pydantic

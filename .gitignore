@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv
+venv/
+
+# HuggingFace cache (VERY IMPORTANT)
+.cache/
+hf_cache/
+
+# OS
+.DS_Store
+
+# Logs
+logs/
