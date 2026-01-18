@@ -3,16 +3,25 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-.env
-.venv
-venv/
+*.egg-info/
+dist/
+build/
 
-# HuggingFace cache (VERY IMPORTANT)
-.cache/
-hf_cache/
+# Env
+.env
+.venv/
+venv/
+env/
 
 # OS
 .DS_Store
 
 # Logs
-logs/
+*.log
+
+# Qdrant local storage (optional)
+qdrant_data/
+
+# Jupyter
+.ipynb_checkpoints/
+

@@ -1,8 +1,11 @@
+from llm.llm_wrapper import LLMWrapper
 from llm.llm_loader import load_llm
 
 
+
 if __name__== "__main__":
-    llm = load_llm()
+    pipeline = load_llm()
+    llm = LLMWrapper(pipeline)
 
     prompt = """
     You are a planning AI.
@@ -10,6 +13,6 @@ if __name__== "__main__":
     "Analyze AI trends in 2024"
     """
 
-    response = llm(prompt)
+    response = llm.generate(prompt)
 
-    print(response[0]['generated_text'])
+    print(response)

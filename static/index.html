@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agentic AI System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-950 text-gray-100 min-h-screen">
+  <!-- Navbar -->
+  <nav class="w-full border-b border-gray-800">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <h1 class="text-xl font-bold tracking-wide">
+        AURA<span class="text-indigo-400">AI</span>
+      </h1>
+      <div class="flex gap-4 items-center">
+        <a href="#features" class="text-gray-300 hover:text-white transition">Features</a>
+        <a href="#try" class="text-gray-300 hover:text-white transition">Try API</a>
+        <a href="http://127.0.0.1:8000/docs" target="_blank"
+           class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 transition font-semibold">
+          Open API Docs
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="max-w-6xl mx-auto px-4 py-14">
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <p class="text-indigo-400 font-semibold tracking-wide uppercase text-sm">
+          Autonomous Multi-Agent System
+        </p>
+        <h2 class="text-4xl md:text-5xl font-bold leading-tight mt-3">
+          Planner → Executor → Critic
+          <span class="text-indigo-400">with Memory + RAG</span>
+        </h2>
+        <p class="text-gray-300 mt-5 text-lg leading-relaxed">
+          Production-style agentic AI system that breaks tasks into subtasks, selects tools,
+          retrieves grounded context from long-term memory, and self-improves using feedback loops.
+        </p>
+
+        <div class="flex flex-wrap gap-4 mt-7">
+          <a href="#try"
+             class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 transition font-semibold">
+            Try it Now
+          </a>
+
+          <a href="http://127.0.0.1:8000/docs" target="_blank"
+             class="px-6 py-3 rounded-xl border border-gray-700 hover:border-gray-500 transition font-semibold text-gray-200">
+            Swagger Docs
+          </a>
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-3 text-sm text-gray-400">
+          <span class="px-3 py-1 rounded-full border border-gray-800">FastAPI</span>
+          <span class="px-3 py-1 rounded-full border border-gray-800">Qdrant</span>
+          <span class="px-3 py-1 rounded-full border border-gray-800">RAG</span>
+          <span class="px-3 py-1 rounded-full border border-gray-800">Docker</span>
+          <span class="px-3 py-1 rounded-full border border-gray-800">Tailwind UI</span>
+        </div>
+      </div>
+
+      <!-- Right Card -->
+      <div class="bg-gray-900/60 border border-gray-800 rounded-2xl p-6 shadow-lg">
+        <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+
+        <div class="grid grid-cols-2 gap-3">
+          <a href="http://127.0.0.1:8000/health" target="_blank"
+             class="px-4 py-3 rounded-xl bg-green-700/80 hover:bg-green-600 transition font-semibold text-center">
+            Health
+          </a>
+
+          <a href="http://127.0.0.1:8000/memory/stats" target="_blank"
+             class="px-4 py-3 rounded-xl bg-gray-800 hover:bg-gray-700 transition font-semibold text-center">
+            Memory Stats
+          </a>
+
+          <a href="http://127.0.0.1:8000/memory/peek?k=5" target="_blank"
+             class="px-4 py-3 rounded-xl bg-gray-800 hover:bg-gray-700 transition font-semibold text-center">
+            Peek Memory
+          </a>
+
+          <a href="http://127.0.0.1:8000/docs" target="_blank"
+             class="px-4 py-3 rounded-xl bg-indigo-700/80 hover:bg-indigo-600 transition font-semibold text-center">
+            Swagger
+          </a>
+        </div>
+
+        <p class="text-gray-400 mt-4 text-sm">
+          Use the Try API form below to run real agent tasks.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Features -->
+  <section id="features" class="max-w-6xl mx-auto px-4 py-8">
+    <h3 class="text-2xl font-bold mb-6">Core Features</h3>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="p-5 rounded-2xl bg-gray-900/60 border border-gray-800">
+        <h4 class="font-semibold text-indigo-300">Planner Agent</h4>
+        <p class="text-gray-300 text-sm mt-2">
+          Converts user goal into structured subtasks.
+        </p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-gray-900/60 border border-gray-800">
+        <h4 class="font-semibold text-indigo-300">Executor Agent</h4>
+        <p class="text-gray-300 text-sm mt-2">
+          Executes plan steps via search, retrieval, and LLM tools.
+        </p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-gray-900/60 border border-gray-800">
+        <h4 class="font-semibold text-indigo-300">Critic + Retry</h4>
+        <p class="text-gray-300 text-sm mt-2">
+          Evaluates quality and retries automatically to improve output.
+        </p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-gray-900/60 border border-gray-800">
+        <h4 class="font-semibold text-indigo-300">Memory + RAG</h4>
+        <p class="text-gray-300 text-sm mt-2">
+          Stores knowledge in Qdrant and retrieves context for grounded answers.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Try API -->
+  <section id="try" class="max-w-6xl mx-auto px-4 py-14">
+    <div class="bg-gray-900/50 border border-gray-800 rounded-2xl p-8">
+      <h3 class="text-2xl font-bold mb-2">Try API (Live)</h3>
+      <p class="text-gray-400 mb-6">
+        Enter a goal and run the full pipeline: Planner → Executor → Critic → Memory.
+      </p>
+
+      <div class="grid lg:grid-cols-2 gap-6">
+        <!-- Form -->
+        <div class="bg-gray-950 border border-gray-800 rounded-2xl p-6">
+          <label class="block text-sm text-gray-300 mb-2 font-semibold">
+            Goal
+          </label>
+
+          <textarea
+            id="goalInput"
+            rows="4"
+            class="w-full p-4 rounded-xl bg-gray-900 border border-gray-700 text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            placeholder="e.g., Analyze recent AI trends and summarize key risks"
+          >Analyze recent AI trends and summarize key risks</textarea>
+
+          <div class="flex gap-3 mt-4">
+            <button
+              id="runBtn"
+              class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 transition font-semibold"
+            >
+              Run Task
+            </button>
+
+            <button
+              id="clearBtn"
+              class="px-6 py-3 rounded-xl border border-gray-700 hover:border-gray-500 transition font-semibold"
+            >
+              Clear
+            </button>
+          </div>
+
+          <p id="statusText" class="text-sm text-gray-400 mt-4"></p>
+        </div>
+
+        <!-- Output -->
+        <div class="bg-gray-950 border border-gray-800 rounded-2xl p-6">
+          <div class="flex items-center justify-between">
+            <h4 class="font-semibold text-lg">Output</h4>
+            <button
+              id="copyBtn"
+              class="text-sm px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition font-semibold"
+            >
+              Copy
+            </button>
+          </div>
+
+          <div class="mt-4 bg-gray-900 border border-gray-800 rounded-xl p-4 overflow-auto max-h-[360px]">
+            <pre id="outputBox" class="text-sm text-gray-200 whitespace-pre-wrap">Output will appear here...</pre>
+          </div>
+
+          <div class="mt-4">
+            <h5 class="font-semibold text-gray-300 mb-2">Logs</h5>
+            <div class="bg-gray-900 border border-gray-800 rounded-xl p-4 overflow-auto max-h-[220px]">
+              <pre id="logsBox" class="text-xs text-gray-300 whitespace-pre-wrap">Logs will appear here...</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-800">
+    <div class="max-w-6xl mx-auto px-4 py-6 text-gray-500 text-sm flex justify-between">
+      <p>© 2026 Agentic AI System</p>
+      <p>Built with ❤️ using FastAPI + Qdrant</p>
+    </div>
+  </footer>
+
+  <script>
+    const goalInput = document.getElementById("goalInput");
+    const runBtn = document.getElementById("runBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const outputBox = document.getElementById("outputBox");
+    const logsBox = document.getElementById("logsBox");
+    const statusText = document.getElementById("statusText");
+    const copyBtn = document.getElementById("copyBtn");
+
+    clearBtn.addEventListener("click", () => {
+      outputBox.textContent = "Output will appear here...";
+      logsBox.textContent = "Logs will appear here...";
+      statusText.textContent = "";
+      goalInput.value = "";
+    });
+
+    copyBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(outputBox.textContent);
+        statusText.textContent = "✅ Output copied to clipboard.";
+      } catch {
+        statusText.textContent = "❌ Copy failed (browser permission issue).";
+      }
+    });
+
+    runBtn.addEventListener("click", async () => {
+      const goal = goalInput.value.trim();
+
+      if (!goal) {
+        statusText.textContent = "❌ Please enter a goal.";
+        return;
+      }
+
+      runBtn.disabled = true;
+      runBtn.textContent = "Running...";
+      statusText.textContent = "⏳ Running agent pipeline...";
+
+      outputBox.textContent = "Working...";
+      logsBox.textContent = "";
+
+      try {
+        const res = await fetch("/run-task", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ goal })
+        });
+
+        if (!res.ok) {
+          const errText = await res.text();
+          throw new Error(errText);
+        }
+
+        const data = await res.json();
+
+        outputBox.textContent = data.final_output || "No output received.";
+        logsBox.textContent = (data.logs || []).join("\n");
+
+        statusText.textContent = "✅ Done!";
+      } catch (err) {
+        outputBox.textContent = "❌ Error occurred.";
+        logsBox.textContent = String(err);
+        statusText.textContent = "❌ Failed to run task. Check logs.";
+      } finally {
+        runBtn.disabled = false;
+        runBtn.textContent = "Run Task";
+      }
+    });
+  </script>
+</body>
+</html>
