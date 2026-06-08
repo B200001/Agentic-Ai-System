@@ -1,168 +1,56 @@
-# Autonomous Agentic AI System (Planner → Executor → Critic + Memory/RAG)
-
-An autonomous multi-agent AI system that takes a user goal, breaks it into steps, executes tools like web search and retrieval (RAG), and improves its final output using a critic feedback loop.
-
-✅ Includes a FastAPI backend + Tailwind homepage UI to run tasks live.
 
 ---
 
-# Autonomous Agentic AI System (Planner → Executor → Critic + Memory/RAG)
+### 2. Autonomous Multi-Agent AI System
 
-An autonomous multi-agent AI system that takes a user goal, breaks it into steps, executes tools like web search and retrieval (RAG), and improves its final output using a critic feedback loop.
+```markdown
+# 🤖 Autonomous Multi-Agent AI System
 
-✅ Includes a FastAPI backend + Tailwind homepage UI to run tasks live.
+A **Planner–Executor–Critic** multi-agent framework that decomposes complex goals, performs dynamic tool calling, and self-validates outputs using long-term memory.
 
----
+Built with **LangChain + LlamaIndex + Qdrant** and deployed as Dockerized FastAPI microservices.
 
-## 🚀 What This Project Does
+## 🎯 Problem
+Single LLM calls often fail on complex, multi-step tasks. Traditional RAG systems lack planning, tool use, and self-correction capabilities.
 
-Given a goal like:
+## ✅ Solution
+A modular **multi-agent architecture** with:
+- **Planner**: Breaks down goals into actionable steps
+- **Executor**: Performs tool calling and task execution
+- **Critic**: Validates outputs and triggers retries when needed
+- Long-term memory for context retention across sessions
 
-> "Analyze recent AI trends and summarize key risks"
+## ✨ Key Features
 
-The system will:
-
-1. **Plan** the task into subtasks (Planner Agent)
-2. **Execute** each step using tools like search + retrieval (Executor Agent)
-3. **Retrieve memory context** from Qdrant (RAG)
-4. **Generate** a structured response using an open-source LLM
-5. **Evaluate & retry** output based on Critic feedback
-
----
-
-## 🧠 Architecture
-
-**Planner → Executor → Critic → Memory (Qdrant + RAG)**
-
-### ✅ System Design Diagram (High Level)
-
-text
-            ┌──────────────────────────┐
-            │        User / UI         │
-            │  (Postman / Web Form)    │
-            └─────────────┬────────────┘
-                          │
-                          ▼
-            ┌──────────────────────────┐
-            │        FastAPI API        │
-            │     POST /run-task        │
-            └─────────────┬────────────┘
-                          │
-                          ▼
-            ┌──────────────────────────┐
-            │       Planner Agent       │
-            │ Goal → JSON Plan/Subtasks │
-            └─────────────┬────────────┘
-                          │
-                          ▼
-            ┌──────────────────────────┐
-            │      Executor Agent       │
-            │ Runs steps + manages ctx  │
-            └───────┬─────────┬────────┘
-                    │         │
-        ┌───────────▼───┐     ▼
-        │ Search Tool     │  ┌─────────────────┐
-        │ (ddgs web search│  │ Retrieval Tool   │
-        └───────────┬────┘  │ (Qdrant RAG)     │
-                    │       └─────────┬───────┘
-                    │                 │
-                    ▼                 ▼
-          ┌──────────────────────────────┐
-          │   Long-Term Memory (Qdrant)  │
-          │ store + similarity retrieval │
-          └──────────────────────────────┘
-                    │
-                    ▼
-            ┌──────────────────────────┐
-            │        LLM Tool           │
-            │ Summarize + format output │
-            └─────────────┬────────────┘
-                          │
-                          ▼
-            ┌──────────────────────────┐
-            │       Critic Agent        │
-            │ Score + Retry if needed   │
-            └─────────────┬────────────┘
-                          │
-                          ▼
-            ┌──────────────────────────┐
-            │       Final Output        │
-            │ Summary + Key Risks       │
-            └──────────────────────────┘
-
-
-## 🚀 What This Project Does
-
-Given a goal like:
-
-> "Analyze recent AI trends and summarize key risks"
-
-The system will:
-
-1. **Plan** the task into subtasks (Planner Agent)
-2. **Execute** each step using tools like search + retrieval (Executor Agent)
-3. **Retrieve memory context** from Qdrant (RAG)
-4. **Generate** a structured response using an open-source LLM
-5. **Evaluate & retry** output based on Critic feedback
-
----
-
-## 🧠 Architecture
-
-**Planner → Executor → Critic → Memory (Qdrant + RAG)**
-
-### Agents
-- **Planner Agent**: Converts a goal into a JSON-based execution plan
-- **Executor Agent**: Runs plan steps and routes to tools
-- **Critic Agent**: Scores output quality and triggers retries for better results
-
-### Tools
-- **search**: DuckDuckGo web search (ddgs)
-- **retrieval**: Qdrant similarity search (RAG)
-- **llm**: Summarization + formatting
-- **critic**: Rule-based evaluation
-
----
-
-## 🌟 Key Features
-
-- Multi-agent planning + execution workflow
-- Tool routing with **normalization** to handle hallucinated tool names
-- Long-term memory using **Qdrant Vector DB**
-- RAG-based context injection for grounded responses
-- Self-improving feedback loop using Critic + retries
-- FastAPI service + Swagger docs
-- Homepage UI (Tailwind) with a **Try API** form
-
----
+- Dynamic tool calling using function calling
+- Self-validation and iterative improvement loop
+- Long-term memory with vector store (Qdrant)
+- Modular microservice design
+- Dockerized for easy deployment and scaling
 
 ## 🛠️ Tech Stack
 
-- **Python**
-- **HuggingFace Transformers**
-- **TinyLlama (Open-source LLM)**
-- **SentenceTransformers (Embeddings)**
-- **Qdrant (Vector Database)**
-- **FastAPI + Uvicorn**
-- **Docker + Docker Compose**
-- **HTML + Tailwind CSS (UI)**
+| Component          | Technology                          |
+|--------------------|-------------------------------------|
+| **Agent Framework**| LangChain, LlamaIndex               |
+| **Memory**         | Qdrant (Vector Store)               |
+| **Backend**        | FastAPI                             |
+| **Orchestration**  | Docker, microservices               |
+| **LLM**            | OpenAI, Anthropic, Local models     |
+| **Tools**          | Custom function calling tools       |
 
----
+## 📊 Results & Impact
 
-## 📌 API Endpoints
+- Successfully handles complex multi-step research and decision-making workflows
+- Self-correcting behavior reduces hallucination on long tasks
+- Modular design allows easy addition of new agents and tools
+- Production-ready microservice architecture
 
-- `GET /` → Homepage UI  
-- `GET /docs` → Swagger API docs  
-- `POST /run-task` → Run Planner → Executor → Critic pipeline  
-- `GET /memory/stats` → Memory collection stats  
-- `GET /memory/search?q=...&k=5` → Search stored memory  
-- `GET /memory/peek?k=5` → Preview stored memory  
 
----
+## 🚀 Getting Started
 
-## ▶️ Run Locally
-
-### 1) Start Qdrant
 ```bash
-docker compose up -d
-uvicorn api.main:app --reload
+git clone https://github.com/B200001/multi-agent-ai-system.git
+cd multi-agent-ai-system
+
+docker-compose up --build
